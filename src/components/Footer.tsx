@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, MessageCircle } from 'lucide-react';
+import { Twitter, Instagram, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const year = new Date().getFullYear();

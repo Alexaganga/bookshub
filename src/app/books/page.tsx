@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, Star } from 'lucide-react';
+import { Star } from 'lucide-react'; // Removed unused BookOpen
 import { motion } from 'framer-motion';
 
 const featuredBooks = [
@@ -14,70 +14,70 @@ const featuredBooks = [
     author: 'Chinua Achebe',
     imageUrl: '/images/things-fall-apart.jpg',
     rating: 4.7,
-    price: 1500, // Approx $11.60 USD
+    price: 1500,
   },
   {
     title: 'The Alchemist',
     author: 'Paulo Coelho',
-    imageUrl: '/',
+    imageUrl: '/images/the-alchemist.jpg',
     rating: 4.8,
-    price: 1800, // Approx $13.90 USD
+    price: 1800,
   },
   {
     title: 'Sapiens: A Brief History of Humankind',
     author: 'Yuval Noah Harari',
-    imageUrl: '/',
+    imageUrl: '/images/sapiens.jpg',
     rating: 4.9,
-    price: 2500, // Approx $19.30 USD
+    price: 2500,
   },
   {
     title: 'Half of a Yellow Sun',
     author: 'Chimamanda Ngozi Adichie',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/half-of-a-yellow-sun.jpg',
     rating: 4.6,
-    price: 2000, // Approx $15.45 USD
+    price: 2000,
   },
   {
     title: 'The River and the Source',
     author: 'Margaret A. Ogola',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/river-and-the-source.jpg',
     rating: 4.5,
-    price: 1200, // Approx $9.25 USD
+    price: 1200,
   },
   {
     title: 'Becoming',
     author: 'Michelle Obama',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/becoming.jpg',
     rating: 4.9,
-    price: 2800, // Approx $21.60 USD
+    price: 2800,
   },
   {
     title: 'Long Walk to Freedom',
     author: 'Nelson Mandela',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/long-walk.jpg',
     rating: 4.8,
-    price: 2200, // Approx $17.00 USD
+    price: 2200,
   },
   {
     title: 'Dust',
     author: 'Yvonne Adhiambo Owuor',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/dust.jpg',
     rating: 4.4,
-    price: 1600, // Approx $12.35 USD
+    price: 1600,
   },
   {
     title: 'Atomic Habits',
     author: 'James Clear',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/atomic-habits.jpg',
     rating: 4.9,
-    price: 2300, // Approx $17.75 USD
+    price: 2300,
   },
   {
     title: 'A Grain of Wheat',
     author: 'Ngũgĩ wa Thiong’o',
-    imageUrl: '/images/things-fall-apart.jpg',
+    imageUrl: '/images/grain-of-wheat.jpg',
     rating: 4.6,
-    price: 1700, // Approx $13.15 USD
+    price: 1700,
   },
 ];
 
@@ -85,7 +85,11 @@ const FeaturedBooks: React.FC = () => {
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    hover: { scale: 1.05, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)', transition: { duration: 0.3 } },
+    hover: {
+      scale: 1.05,
+      boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
+      transition: { duration: 0.3 },
+    },
   };
 
   return (
@@ -117,7 +121,7 @@ const FeaturedBooks: React.FC = () => {
                       width={300}
                       height={400}
                       className="w-full h-72 object-cover rounded-t-xl"
-                      priority={index < 4} // Prioritize first 4 images for faster loading
+                      priority={index < 4}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-t-xl" />
                   </div>

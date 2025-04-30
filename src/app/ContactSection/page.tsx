@@ -1,36 +1,38 @@
 'use client';
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Facebook, Twitter, Instagram, MessageCircle, Mail, Phone } from 'lucide-react';
+import { Twitter, Instagram, MessageCircle, Mail, Phone } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
+    // Optional: Add actual form handling logic here
     console.log('Form submitted');
-    // Show success message using toast or other notification
+    // Optionally show a success toast or notification here
   };
 
   return (
     <section id="contact" className="section-padding bg-book-light">
       <div className="container mx-auto container-padding">
+        {/* Header */}
         <div className="text-center mb-12">
           <Badge className="mb-3 bg-book-primary/20 text-book-primary hover:bg-book-primary/30">
             Get In Touch
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-            Contact Us
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Contact Us</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Have questions about our ebooks or need assistance with your purchase? We're here to help!
           </p>
         </div>
 
+        {/* Contact Info + Form */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Contact Info Card */}
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <div className="bg-gradient-to-br from-book-primary to-book-accent text-white p-6">
@@ -63,40 +65,37 @@ const ContactSection: React.FC = () => {
             </CardContent>
           </Card>
 
+          {/* Contact Form */}
           <Card>
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input 
-                    placeholder="Your Name" 
-                    required 
-                    className="bg-white border-muted"
-                  />
-                </div>
-                <div>
-                  <Input 
-                    type="email" 
-                    placeholder="Your Email" 
-                    required 
-                    className="bg-white border-muted"
-                  />
-                </div>
-                <div>
-                  <Input 
-                    placeholder="Subject" 
-                    required 
-                    className="bg-white border-muted"
-                  />
-                </div>
-                <div>
-                  <Textarea 
-                    placeholder="Your Message" 
-                    required 
-                    className="bg-white border-muted min-h-[120px]"
-                  />
-                </div>
-                <Button 
-                  type="submit" 
+                <Input
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="bg-white border-muted"
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                  className="bg-white border-muted"
+                />
+                <Input
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                  className="bg-white border-muted"
+                />
+                <Textarea
+                  name="message"
+                  placeholder="Your Message"
+                  required
+                  className="bg-white border-muted min-h-[120px]"
+                />
+                <Button
+                  type="submit"
                   className="w-full bg-book-primary hover:bg-book-secondary"
                 >
                   Send Message

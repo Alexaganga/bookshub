@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Facebook, Twitter, Instagram, MessageCircle, Mail, Phone } from 'lucide-react';
+import { Twitter, Instagram, MessageCircle, Mail, Phone } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
             Contact Us
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our ebooks or need assistance with your purchase? We're here to help!
+            Have questions about our ebooks or need assistance with your purchase? We&apos;re here to help!
           </p>
         </div>
 

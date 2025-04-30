@@ -1,10 +1,10 @@
 import React from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight } from 'lucide-react';
 
-// Book data
 const featuredBooks = [
   {
     id: 1,
@@ -60,21 +60,23 @@ const FeaturedBooks: React.FC = () => {
             Bestselling eBooks
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our most popular titles that readers can't put down. From business to creativity, these books will transform your perspective.
+            Discover our most popular titles that readers can&rsquo;t put down. From business to creativity, these books will transform your perspective.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featuredBooks.map((book) => (
             <Card key={book.id} className="book-card h-full flex flex-col">
-              <div className="book-cover">
-                <img 
-                  src={book.cover} 
+              <div className="book-cover relative w-full h-[250px]">
+                <Image 
+                  src={book.cover}
                   alt={book.title}
-                  className="h-full w-full object-cover"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-md"
                 />
                 {book.isBestseller && (
-                  <div className="absolute top-2 right-2">
+                  <div className="absolute top-2 right-2 z-10">
                     <Badge className="bg-book-accent text-white">Bestseller</Badge>
                   </div>
                 )}
