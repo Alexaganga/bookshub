@@ -10,41 +10,41 @@ const featuredBooks = [
     id: 1,
     title: "The Art of Digital Marketing",
     author: "Sarah Johnson",
-    cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    cover: "/book1.jpg", // Changed to local image path
     price: "$19.99",
     category: "Marketing",
     rating: 4.7,
-    isBestseller: true
+    isBestseller: true,
   },
   {
     id: 2,
     title: "Mastering Data Science",
     author: "Michael Chen",
-    cover: "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    cover: "/book2.jpg", // Changed to local image path
     price: "$24.99",
     category: "Technology",
     rating: 4.9,
-    isBestseller: true
+    isBestseller: true,
   },
   {
     id: 3,
     title: "Financial Freedom Blueprint",
     author: "Jessica Williams",
-    cover: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    cover: "/book3.jpg", // Changed to local image path
     price: "$17.99",
     category: "Finance",
     rating: 4.5,
-    isBestseller: false
+    isBestseller: false,
   },
   {
     id: 4,
     title: "The Creative Mind",
     author: "Robert Anderson",
-    cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    cover: "/book4.jpg", // Changed to local image path
     price: "$15.99",
     category: "Self-Help",
     rating: 4.6,
-    isBestseller: false
+    isBestseller: false,
   },
 ];
 
@@ -60,7 +60,7 @@ const FeaturedBooks: React.FC = () => {
             Bestselling eBooks
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover our most popular titles that readers can&rsquo;t put down. From business to creativity, these books will transform your perspective.
+            Discover our most popular titles that readers can't put down. From business to creativity, these books will transform your perspective.
           </p>
         </div>
 
@@ -68,12 +68,14 @@ const FeaturedBooks: React.FC = () => {
           {featuredBooks.map((book) => (
             <Card key={book.id} className="book-card h-full flex flex-col">
               <div className="book-cover relative w-full h-[250px]">
-                <Image 
+                <Image
                   src={book.cover}
-                  alt={book.title}
-                  layout="fill"
-                  objectFit="cover"
+                  alt={`Cover of ${book.title} by ${book.author}`}
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="rounded-t-md"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  priority={book.id <= 2}
                 />
                 {book.isBestseller && (
                   <div className="absolute top-2 right-2 z-10">
