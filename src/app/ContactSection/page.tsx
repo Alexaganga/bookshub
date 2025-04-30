@@ -26,7 +26,7 @@ const ContactSection: React.FC = () => {
           </Badge>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Contact Us</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have questions about our ebooks or need assistance with your purchase? We're here to help!
+            Have questions about our ebooks or need assistance with your purchase? We&apos;re here to help!
           </p>
         </div>
 

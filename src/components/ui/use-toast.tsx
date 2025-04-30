@@ -12,4 +12,14 @@ const MyComponent = () => {
   return <button onClick={showToast}>Show Toast</button>;
 };
 
-export { useToast, toast };
+// Use the MyComponent somewhere in your code to avoid the unused variable error
+const App = () => {
+  return (
+    <div>
+      <h1>Welcome to the App</h1>
+      <MyComponent />
+    </div>
+  );
+};
+
+export { MyComponent, useToast, toast };
