@@ -22,4 +22,4 @@ const App = () => {
   );
 };
 
-export { MyComponent, useToast, toast };
+export { App, MyComponent, useToast, toast };
