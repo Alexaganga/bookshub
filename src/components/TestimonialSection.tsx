@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -30,45 +31,77 @@ const testimonials = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
 const TestimonialSection: React.FC = () => {
   return (
-    <section className="section-padding bg-gradient-to-br from-book-primary to-book-accent text-white">
-      <div className="container mx-auto container-padding">
-        <div className="text-center mb-12">
-          <Badge className="mb-3 bg-white/20 text-white hover:bg-white/30">
+    <section className="section-padding bg-gradient-to-br from-gray-100 to-gray-300 text-gray-900 font-sans overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-16">
+          <Badge className="mb-4 bg-gray-800 text-white hover:bg-gray-700 transition-all duration-300 text-sm tracking-wide uppercase px-4 py-1 rounded-full">
             Testimonials
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4 leading-tight drop-shadow-sm">
             What Our Readers Say
           </h2>
-          <p className="text-white/80 max-w-2xl mx-auto">
-            Discover why thousands of readers choose our ebooks for their personal and professional growth.
+          <p className="text-gray-700 max-w-2xl mx-auto text-lg">
+            Discover why thousands of readers trust our ebooks to elevate their knowledge and careers.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="bg-white/10 backdrop-blur border-white/20">
-              <CardContent className="p-6">
-                <div className="flex items-start space-x-4">
-                  <Avatar className="h-10 w-10 border-2 border-white">
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback className="bg-book-secondary text-white">
-                      {testimonial.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h4 className="font-medium text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-white/70">{testimonial.role}</p>
+            <motion.div key={testimonial.id} variants={cardVariants}>
+              <Card className="bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-transform transform hover:scale-[1.02]">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <Avatar className="h-12 w-12 border-2 border-gray-300 shadow-sm">
+                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                      <AvatarFallback className="bg-gray-600 text-white">
+                        {testimonial.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 text-lg">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="mt-4">
-                  <p className="text-white/80">{testimonial.content}</p>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="mt-4">
+                    <p className="text-gray-800 text-base leading-relaxed italic">
+                      “{testimonial.content}”
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

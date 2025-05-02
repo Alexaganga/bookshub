@@ -12,104 +12,109 @@ const AboutSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.25,
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
   };
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 md:py-28 bg-gradient-to-b from-[#fdfbfa] to-white font-sans">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16">
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Text Content */}
+          {/* Left Content */}
           <motion.div variants={itemVariants}>
-            <Badge className="mb-4 bg-book-primary/20 text-book-primary hover:bg-book-primary/30">
-              Our Story
+            <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-300">
+              Why Bookshub?
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
-              Transforming Knowledge Into Digital Excellence
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+              Fueling Minds, One Ebook at a Time
             </h2>
-            <div className="space-y-4 text-gray-600">
+            <div className="space-y-5 text-gray-700 text-lg">
               <p>
-                Founded with a passion for spreading knowledge, Bookshub has become a premier
-                destination for quality digital books across various fields of interest.
+                At <strong>Bookshub</strong>, we believe that knowledge is power—and accessibility is key.
+                Our platform brings together an ever-growing library of ebooks to ignite curiosity,
+                support learning, and unlock personal growth for everyone, everywhere.
               </p>
               <p>
-                Our carefully curated collection focuses on providing readers with valuable insights,
-                practical knowledge, and captivating stories that inspire growth and learning.
+                Whether you're escaping into fiction, mastering a new skill, or exploring ideas that
+                change your perspective, our ebooks are crafted and curated to make every page count.
               </p>
               <p>
-                We collaborate with renowned authors and experts to ensure our readers receive only
-                the highest quality content, professionally formatted for the best reading experience.
+                We’re not just selling books—we’re building bridges to opportunity, understanding, and transformation.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-8">
-              <motion.div variants={itemVariants} className="text-center p-4">
-                <p className="font-serif text-3xl font-bold text-book-primary">500+</p>
-                <p className="text-sm text-gray-500">Ebooks Available</p>
+            <div className="grid grid-cols-3 gap-6 mt-10 text-center">
+              <motion.div variants={itemVariants}>
+                <p className="font-serif text-3xl md:text-4xl font-bold text-primary">500+</p>
+                <p className="text-sm text-gray-500">Curated Ebooks</p>
               </motion.div>
-              <motion.div variants={itemVariants} className="text-center p-4">
-                <p className="font-serif text-3xl font-bold text-book-primary">50k+</p>
-                <p className="text-sm text-gray-500">Happy Readers</p>
+              <motion.div variants={itemVariants}>
+                <p className="font-serif text-3xl md:text-4xl font-bold text-primary">50k+</p>
+                <p className="text-sm text-gray-500">Readers Empowered</p>
               </motion.div>
-              <motion.div variants={itemVariants} className="text-center p-4">
-                <p className="font-serif text-3xl font-bold text-book-primary">100+</p>
-                <p className="text-sm text-gray-500">Expert Authors</p>
+              <motion.div variants={itemVariants}>
+                <p className="font-serif text-3xl md:text-4xl font-bold text-primary">20+</p>
+                <p className="text-sm text-gray-500">Genres to Explore</p>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Image Grid */}
+          {/* Right Images */}
           <motion.div variants={itemVariants} className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <Card className="p-2 shadow-lg col-span-2">
+              <Card className="p-2 shadow-xl col-span-2 hover:scale-[1.02] transition-transform duration-500 ease-in-out">
                 <CardContent className="p-0">
                   <Image
-                    src="/images/reader-enjoying-ebook.jpg"
+                    src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0ca"
                     alt="Reader enjoying an ebook"
                     width={800}
                     height={400}
-                    className="rounded-sm w-full h-44 object-cover"
+                    className="rounded-md w-full h-48 md:h-56 object-cover"
                     priority
                   />
                 </CardContent>
               </Card>
-              <Card className="p-2 shadow-lg">
+              <Card className="p-2 shadow-xl hover:scale-[1.03] transition-transform duration-500 ease-in-out">
                 <CardContent className="p-0">
                   <Image
-                    src="/images/digital-reading.jpg"
+                    src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
                     alt="Digital reading"
                     width={400}
                     height={200}
-                    className="rounded-sm w-full h-36 object-cover"
+                    className="rounded-md w-full h-36 object-cover"
                   />
                 </CardContent>
               </Card>
-              <Card className="p-2 shadow-lg">
+              <Card className="p-2 shadow-xl hover:scale-[1.03] transition-transform duration-500 ease-in-out">
                 <CardContent className="p-0">
                   <Image
-                    src="/images/digital-technology.jpg"
+                    src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d"
                     alt="Digital technology"
                     width={400}
                     height={200}
-                    className="rounded-sm w-full h-36 object-cover"
+                    className="rounded-md w-full h-36 object-cover"
                   />
                 </CardContent>
               </Card>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-book-primary/10 to-transparent rounded-full blur-3xl -z-10 transform scale-150" />
+
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-pink-100 rounded-full blur-3xl -z-10 scale-150 opacity-40" />
           </motion.div>
         </motion.div>
       </div>
