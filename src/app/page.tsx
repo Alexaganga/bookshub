@@ -15,7 +15,6 @@ import Chatbot from '@/components/Chatbot';
 export default function Home() {
   const [enteredWebsite, setEnteredWebsite] = useState(false);
 
-  // Typewriter effect variants for subtitle
   const typewriterVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,6 +30,19 @@ export default function Home() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const balloonVariants = {
+    float: {
+      y: [0, -40, 0],
+      transition: {
+        duration: 5,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
+  const colors = ['#FFD700', '#FF69B4', '#7FFFD4', '#FF4500'];
+
   return (
     <AnimatePresence mode="wait">
       {!enteredWebsite ? (
@@ -42,31 +54,39 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="relative min-h-screen flex items-center justify-center bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-700 overflow-hidden"
         >
-          {/* Overlay for readability */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-black opacity-40" />
 
-          {/* Content */}
+          {/* Animated Balloons */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${10 + i * 10}%`,
+                bottom: '-80px',
+                zIndex: 0,
+              }}
+              variants={balloonVariants}
+              animate="float"
+            >
+              <svg width="40" height="60" viewBox="0 0 40 60" fill="none">
+                <ellipse cx="20" cy="20" rx="20" ry="25" fill={colors[i % colors.length]} />
+                <line x1="20" y1="45" x2="20" y2="60" stroke="white" strokeWidth="2" />
+              </svg>
+            </motion.div>
+          ))}
+
+          {/* Landing Content */}
           <main className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8">
-            {/* Logo with enhanced effect */}
             <motion.div
               initial={{ y: 50, opacity: 0 }}
-              animate={{
-                y: 0,
-                opacity: 1,
-                scale: 1.1,
-                rotate: 5,
-              }}
-              transition={{
-                duration: 1.2,
-                delay: 0.2,
-                type: 'spring',
-                stiffness: 150,
-                damping: 20,
-              }}
+              animate={{ y: 0, opacity: 1, scale: 1.1, rotate: 5 }}
+              transition={{ duration: 1.2, delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
               className="mb-8"
             >
               <Image
-                src="/images/Logo.png" // Placeholder for your logo
+                src="/images/Logo.png"
                 alt="Bookshub logo"
                 width={220}
                 height={48}
@@ -75,7 +95,6 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* Main Heading */}
             <motion.h1
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -85,7 +104,6 @@ export default function Home() {
               Welcome to <span className="text-gold">Bookshub</span>
             </motion.h1>
 
-            {/* Subtitle with typewriter effect */}
             <motion.p
               variants={typewriterVariants}
               initial="hidden"
@@ -99,7 +117,6 @@ export default function Home() {
               ))}
             </motion.p>
 
-            {/* Enter Button */}
             <motion.button
               type="button"
               onClick={() => setEnteredWebsite(true)}

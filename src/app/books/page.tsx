@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -82,6 +83,8 @@ const featuredBooks = [
 ];
 
 const FeaturedBooks: React.FC = () => {
+  const router = useRouter();
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -98,9 +101,18 @@ const FeaturedBooks: React.FC = () => {
         <Badge className="mb-6 bg-gold text-burgundy px-4 py-2 text-lg font-lora font-semibold">
           Featured Books
         </Badge>
-        <h2 className="text-4xl md:text-5xl font-playfair font-bold text-burgundy mb-12">
+        <h2 className="text-4xl md:text-5xl font-playfair font-bold text-burgundy mb-6">
           Bestsellers You Can’t Miss
         </h2>
+
+        <div className="mb-10 flex justify-center">
+          <Button
+            onClick={() => router.push('/')}
+            className="bg-burgundy text-white hover:bg-gold hover:text-burgundy font-lora px-6 py-3 rounded-full transition-all"
+          >
+            ← Back to Home
+          </Button>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {featuredBooks.map((book, index) => (
